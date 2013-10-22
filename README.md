@@ -29,9 +29,15 @@ Key:
                         
 - Player spawn - When ever a play logs into The Mass. They will join in the Hub. If they join another server. They will be teleported to the spawn.
 
+- Players Name Tag Colors ( Name above there heads ) - Changes the color of staff members names using TabAPI.
+
 - Disable Weather - Makes it so the weather on the server is always sun!
 
 - Disable Daychange - In some servers. 
+
+- Gamemode Switching - Able to switch gamemodes faster and quicker.
+
+- Messaging - Able to message players. 
                                 
                                   -=- -=-=- -=-=-=- Commands -=-=-=- -=-=- -=-
                                   
