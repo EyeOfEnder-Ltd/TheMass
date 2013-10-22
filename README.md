@@ -40,4 +40,7 @@ Key:
 - /Hub - Brings you to the hub.
 
 - /Lobby - Brings you to the hub.
-                                
+         
+- /Gortume - Brings players to the gortume server.
+
+- /Dodgeball - Brings people to the dodgeball server.
