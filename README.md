@@ -16,6 +16,8 @@ Key:
                         
 - Player Vanishing Clock - A click that when you click on, will make everyone on the server invisible.
 
+- Admin Vanishing - Admins being able to vanish. 
+
 - Help book - This book when you click on will have a help menu, info on the server, and more!
 
 - Jump pads ( Pressure Plate ) - A feature only on the hub server that when you stand on the pressure plate. It will fling you into the air with a new volacity.
