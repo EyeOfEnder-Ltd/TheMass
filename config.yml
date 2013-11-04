@@ -1,0 +1,30 @@
+proxy-enabled: true
+weather-enabled: false
+itemsOnJoin: false
+messages:
+    death:
+        display: false
+        message: 'Rest in peace, %player%.'
+    join-broadcast:
+        display: false
+        message: '%player% has joined the lobby.'
+    join-individual:
+        display: true
+        message: 'Now playing on the lobby server.'
+    kicked:
+        display: false
+        messages: '%player% was kicked: %reason%'
+    leave:
+        display: false
+        message: '%player% has decided to quit.'
+    server-change:
+        display: true
+        message: '%player% has switched to the %group% server(s).'
+server-groups:
+  hub:
+  - hub
+  dodgeball:
+  - dodgeball1
+donator-groups:
+  gortume:
+  - gortume1

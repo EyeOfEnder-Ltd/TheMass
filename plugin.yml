@@ -1,0 +1,50 @@
+name: TheMass
+main: com.eyeofender.themass.TheMass
+version: 1.0.0
+author: Avery246813579, LinearLogic
+commands:
+    cloudcontrol:
+        description: Root command
+        usage: /cc [version/reload]
+        aliases: cc
+    play:
+        description: Join the server with the provided ID (random if none) in the speficied server group
+        usage: /play <server group> [id]
+    hub:
+        description: Sends you to the hub server.
+    gortume:
+        description: Sends you to the gortume server.
+    dodgeball:
+        description: Sends you to the dodgeball server.
+    vanish:
+        description: Vanishes a player.
+    spawn:
+        description: Sends you to the dodgeball server.
+    setspawn:
+        description: Vanishes a player.
+    open:
+        description: Opens a players inventory.
+    join:
+        description: Opens a players inventory.        
+permissions:
+    themass.reload:
+        description: Permission to reload the config
+        default: op
+    themass.play:
+        description: Permission to switch servers with /play <server group> [id]
+        default: true
+    themass.donator:
+        description: Permission to switch servers with /play <server group> [id]
+        default: true  
+    themass.vanish:
+        description: Makes the target player vanish.
+        default: op      
+    themass.spawn:
+        description: Teleports a player to spawn.
+        default: true  
+    themass.setspawn:
+        description: Sets the spawn location.
+        default: op        
+    themass.open:
+        description: Sets the spawn location.
+        default: op                           
