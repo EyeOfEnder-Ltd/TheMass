@@ -5,18 +5,23 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.util.Vector;
 
 import com.eyeofender.themass.TheMass;
 import com.eyeofender.themass.items.HatMenu;
@@ -27,8 +32,8 @@ public class PlayerListener implements Listener{
  
 	private TheMass plugin;
 	 
-    private VanishClock clock = new VanishClock(plugin);
-    private ServerCompass compass = new ServerCompass(plugin);
+   // private VanishClock clock = new VanishClock(plugin);
+   // private ServerCompass compass = new ServerCompass(plugin);
     private HatMenu hat = new HatMenu(plugin);
 
 	public PlayerListener (TheMass plugin){
@@ -65,23 +70,12 @@ public class PlayerListener implements Listener{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+			
 	        
 			Location l = new Location(world, plugin.getConfig().getConfigurationSection("spawn").getInt("x"), plugin.getConfig().getConfigurationSection("spawn").getInt("y"),plugin.getConfig().getConfigurationSection("spawn").getInt("z"), yaw, pitch);
-
-			if(plugin.getConfig().getBoolean("itemsOnJoin")){
-    			
-    			/** Clears players Inventory **/
-    			player.getInventory().clear();
-    			
-    			/** Adds starting items **/
-    			
-    			////player.getInventory().addItem(this.clock.vanishClock());
-    			//player.getInventory().addItem(compass.serverCompass());
-    			//player.getInventory().addItem(hat.hatMenu());
-			}
 			
 	        if(l != null){
-	        	event.getPlayer().teleport(l);
+	        	event.getPlayer().teleport(l.clone().add(0.5D, 0.5D, 0.5D));
 	        }
 	    }
 
@@ -98,49 +92,28 @@ public class PlayerListener implements Listener{
 	            plugin.getConfig().getString("messages.leave.message").replaceAll("%player%", event.getPlayer().getName()));
 	    }
 	    
-	    @EventHandler(priority = EventPriority.HIGHEST)
-		public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
-			if (!event.isCancelled()) {
-				Player player = event.getPlayer();
-				String cmd = event.getMessage().toLowerCase();
-
-				@SuppressWarnings("unused")
-				String[] check = cmd.split("");
-				if (cmd.contains("/join") && cmd.contains("/j")) {
-					player.getInventory().clear();
-					player.getInventory().setHelmet(null);
-					player.getInventory().setChestplate(null);
-					player.getInventory().setLeggings(null);
-					player.getInventory().setBoots(null); 
-				}
-			}
-		}
+	    @EventHandler
+	    public void onInteract(PlayerInteractEvent event) {
+	    	if(event.getAction() == Action.PHYSICAL) {
+	    	//The player triggered a physical interaction event
+	    	 
+	    	if(event.getClickedBlock().getType() == Material.STONE_PLATE) {
+	    	//The player stepped on a stone pressure plate
+	    	 
+	    		event.getPlayer().setVelocity(event.getPlayer().getLocation().getDirection().multiply(5));
+	            event.getPlayer().setVelocity(new Vector(event.getPlayer().getVelocity().getX(), 1.0D, event.getPlayer().getVelocity().getZ()));
+	    	}
+	        }
+	    }
 	    
 	    @EventHandler
-	    public void onPlayerInteract(PlayerInteractEvent e) {
-	     
-	    if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType() == Material.SIGN_POST || e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType() == Material.SIGN || e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType() == Material.WALL_SIGN){
-	     
-	    	Block block = e.getClickedBlock();
-	    	Sign sign = (Sign) block.getState();
-	     
-	    		if(sign.getLine(0).equalsIgnoreCase(""  + ChatColor.GREEN + ChatColor.BOLD + "[Join]")){
-	    			String arena = sign.getLine(1);
-	    				
-	    			Player player = e.getPlayer();
-	    			
-	    			player.getInventory().clear();
-	    			player.getInventory().setHelmet(null);
-	    			player.getInventory().setChestplate(null);
-	    			player.getInventory().setLeggings(null);
-	    			player.getInventory().setBoots(null); 
-	    			
-	    		}
-	    	
-	    	}
+	    public void onPlayerDamage(EntityDamageEvent e) {
+	        if (e.getEntity() instanceof Player) {
+	            Player p = (Player) e.getEntity();
+	            if (e.getCause() == DamageCause.FALL) {
+	                e.setDamage(0.0);
+	            }
+	        }
 	    }
 	    
-	    public void clearInventory(Player player){
-
-	    }
 }

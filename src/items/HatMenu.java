@@ -36,8 +36,7 @@ public class HatMenu implements Listener {
 	/***********************************************************
 	 * 
 	 * 				Inventorys
-	 * 
-	 **************************************************************/
+	
 
 	
 	public void createMenu(Player player){
@@ -162,12 +161,7 @@ public class HatMenu implements Listener {
          
          player.openInventory(i);
 	}
-	
-	/***********************************************************
-	 * 
-	 * 				Sections
-	 * 
-	 **************************************************************/
+
 	
 	public ItemStack hatMenu() {
 		ItemStack is = new ItemStack(Material.DIAMOND_HELMET);
@@ -235,11 +229,7 @@ public class HatMenu implements Listener {
 		return is;
 	}
 	
-	/*****************************************************************************************
-	 * 
-	 * 
-	 * 
-	 *********************************************************************************************/
+
 	
 	public ItemStack gizzy() {
 		ItemStack is = new ItemStack(Material.SKULL_ITEM);
@@ -274,11 +264,7 @@ public class HatMenu implements Listener {
 		return is;
 	}
 	
-	/**************************************************************************
-	 * 
-	 * 						Developers
-	 * 
-	 *************************************************************************/
+
 	
 	public ItemStack avery() {
 		ItemStack is = new ItemStack(Material.SKULL_ITEM);
@@ -302,11 +288,7 @@ public class HatMenu implements Listener {
 		return is;
 	}
 	
-	/**************************************************************************
-	 * 
-	 * 						Admins
-	 * 
-	 *************************************************************************/
+
 	
 	public ItemStack TheArcadix() {
 		ItemStack is = new ItemStack(Material.SKULL_ITEM);
@@ -363,11 +345,7 @@ public class HatMenu implements Listener {
 		return is;
 	}
 	
-	/**************************************************************************
-	 * 
-	 * 						Moderators
-	 * 
-	 *************************************************************************/
+
 	
 	public ItemStack MrMouldyMango() {
 		ItemStack is = new ItemStack(Material.SKULL_ITEM);
@@ -680,11 +658,7 @@ public class HatMenu implements Listener {
 		Player player = (Player) event.getWhoClicked();
         ItemStack clicked = event.getCurrentItem();
         
-        /************************************************
-         * 
-         *         Sections
-         * 
-         ***********************************************/
+
 
         if (clicked == null || clicked.getType() == Material.AIR) return;
 
@@ -729,12 +703,7 @@ public class HatMenu implements Listener {
 				return;
 		  }
         
-        /************************************************
-         * 
-         *         People
-         * 
-         ***********************************************/
-		
+
 		  if (clicked.getItemMeta().getDisplayName().equals("" + ChatColor.GOLD + ChatColor.BOLD + "gizzy14gazza")) {
 				event.setCancelled(true);
 				ItemStack skull = new ItemStack(397, 1, (short) 3);
@@ -1140,5 +1109,5 @@ public class HatMenu implements Listener {
 			event.setCancelled(true);
 			player.getInventory().setHelmet(null);
 		}
-	}
+	}**/
 }

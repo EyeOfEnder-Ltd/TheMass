@@ -19,7 +19,7 @@ import com.eyeofender.themass.TheMass;
 
 public class ServerCompass implements Listener {
 
-	public static Inventory i;
+	/**public static Inventory i;
 	
 	@SuppressWarnings("unused")
 	private TheMass plugin;
@@ -187,5 +187,5 @@ public class ServerCompass implements Listener {
 		  
 		  
         }
-	}
+	}**/
 }

@@ -97,9 +97,6 @@ public class CommandPlay extends TMCommand {
         }
         try {
             player.sendPluginMessage(plugin, "BungeeCord", baos.toByteArray());
-            if (plugin.getConfig().getBoolean("messages.server-change.display"))
-                plugin.getServer().broadcastMessage(TheMass.PREFIX + plugin.getConfig().getString("messages.server-change.message")
-                        .replaceAll("%player%", player.getName()).replaceAll("%group%", group));
             return true;
         } catch (ChannelNotRegisteredException e) {
             return sendMsg(sender, ChatColor.RED + "This server is not on a BungeeCord setup.");

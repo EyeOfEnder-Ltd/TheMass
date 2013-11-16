@@ -25,6 +25,5 @@ server-groups:
   - hub
   dodgeball:
   - dodgeball1
-donator-groups:
   gortume:
   - gortume1

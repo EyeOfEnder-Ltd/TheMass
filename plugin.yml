@@ -20,7 +20,7 @@ commands:
         description: Vanishes a player.
     spawn:
         description: Sends you to the dodgeball server.
-    setspawn:
+    Setspawnpoint:
         description: Vanishes a player.
     open:
         description: Opens a players inventory.

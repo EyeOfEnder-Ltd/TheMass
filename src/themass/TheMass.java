@@ -30,8 +30,8 @@ public class TheMass extends JavaPlugin {
     
     private Map<String, Boolean> vanished = new HashMap<String, Boolean>();
     
-    private VanishClock clock = new VanishClock(this);
-    private ServerCompass compass = new ServerCompass(this);
+    //private VanishClock clock = new VanishClock(this);
+  //  private ServerCompass compass = new ServerCompass(this);
     private HatMenu hat = new HatMenu(this);
     
     @Override
@@ -55,9 +55,9 @@ public class TheMass extends JavaPlugin {
         getLogger().info("Loading: listeners");
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getServer().getPluginManager().registerEvents(new EnvironmentListener(this), this);
-        getServer().getPluginManager().registerEvents(new VanishClock(this), this);
-        getServer().getPluginManager().registerEvents(new ServerCompass(this), this);
-        getServer().getPluginManager().registerEvents(new HatMenu(this), this);
+  //      getServer().getPluginManager().registerEvents(new VanishClock(this), this);
+   //     getServer().getPluginManager().registerEvents(new ServerCompass(this), this);
+      //  getServer().getPluginManager().registerEvents(new HatMenu(this), this);
         
     }
 
@@ -172,7 +172,7 @@ public class TheMass extends JavaPlugin {
     				e.printStackTrace();
     			}
     			Location l = new Location(world, this.getConfig().getConfigurationSection("spawn").getInt("x"), this.getConfig().getConfigurationSection("spawn").getInt("y"),this.getConfig().getConfigurationSection("spawn").getInt("z"), yaw, pitch);
-    			player.teleport(l);
+    			player.teleport(l.clone().add(0.5D, 0.5D, 0.5D));
     			this.sendMessage(player, "Spawned to server spawn.");
     			
     			if(this.getConfig().getBoolean("itemsOnJoin")){
@@ -182,9 +182,9 @@ public class TheMass extends JavaPlugin {
 	    			
 	    			/** Adds starting items **/
 	    			
-	    			player.getInventory().addItem(this.clock.vanishClock());
-	    			player.getInventory().addItem(compass.serverCompass());
-	    			player.getInventory().addItem(hat.hatMenu());
+	    	//		player.getInventory().addItem(this.clock.vanishClock());
+	    		//	player.getInventory().addItem(compass.serverCompass());
+	    		//	player.getInventory().addItem(hat.hatMenu());
     			}
     		}else{
     			this.sendPermissions(player);
@@ -192,7 +192,7 @@ public class TheMass extends JavaPlugin {
     		
     	}
     	
-    	if(CommandLabel.equalsIgnoreCase("Setspawn")){
+    	if(CommandLabel.equalsIgnoreCase("Setspawnpoint")){
     		if(player.hasPermission("themass.setspawn")){
     			if(this.getConfig().contains("spawn")){
     				this.getConfig().getConfigurationSection("spawn").set("x", player.getLocation().getBlockX());

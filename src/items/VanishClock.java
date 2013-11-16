@@ -19,7 +19,7 @@ import com.eyeofender.themass.TheMass;
 
 public class VanishClock implements Listener{
 
-	private TheMass plugin;
+	/**private TheMass plugin;
 	
 	private Map<String, Boolean> vanished = new HashMap<String, Boolean>(); 
 	
@@ -94,4 +94,5 @@ public class VanishClock implements Listener{
 	        	return;
 	        }
         }
+        **/
 }
